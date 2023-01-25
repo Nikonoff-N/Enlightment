@@ -1,0 +1,73 @@
+{% extends "crm/base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <form action="{% url 'calendar' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="date" value="{{ previos_week }}">
+                    <input type="submit" value="Пред. неделя">
+                </form> - {{today}}
+                <form action="{% url 'calendar' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="date" value="{{ next_week }}">
+                    <input type="submit" value="След. неделя">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+            {%for w in week%}
+            <div class="col-sm-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                {% if w.groups%}
+                <table class="table">
+                    <tr>
+                        <th>{{w.weekday}}</th>
+                    </tr>
+                    <tr>
+                        <th>Статус</th>
+                        <th>Группа</th>
+                        <th>Учитель</th>
+                        <th>Цена</th>
+                        <th>Студенты</th>
+                        <th>Кнопочки</th>
+                    </tr>
+                    {%for l in w.lessons%}
+                    <tr>
+                        <td>{{l.state}}</td>
+                        <td>{{l.name}}</td>
+                        <td>{{l.teacher.name}}</td>
+                        <td>{{l.price}}</td>
+                        <td>{{l.bodycount}}</td>
+                        <td>
+                            <a href="{% url 'canselLesson' l.pk %}" class = "btn btn-primary m-2">Отменить</a>
+                            <a href="{% url 'okLesson' l.pk %}" class = "btn btn-primary m-2">Все были</a>
+                            <a href="{% url 'editLesson' l.pk %}" class = "btn btn-primary m-2">Редактировать</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+                {%else%}
+                    <table>
+                        <tr>
+                            <td>{{w.weekday}}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Нет уроков!</td>
+                        </tr>
+                    </table>
+                {%endif%}
+            </div>
+        </div>
+            {%endfor%}
+    </div>
+</div>
+
+
+{% endblock %}
