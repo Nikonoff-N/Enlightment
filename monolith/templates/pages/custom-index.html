@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+  <!-- {% include 'includes/pre-loader.html' %} -->
+  
+  <section class="section-header bg-secondary text-white">
+    <div class="container">
+       <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-7 col-lg-6 text-center text-md-left">
+                <h1 class="display-2 mb-4">Enlightment <br class="d-none d-md-inline">CRM-система</h1>
+                <p class="lead mb-4 text-muted">Themesberg can help you build a modern website, a creative logo or PWA, that will bring you customers and and stay on top of your competition.</p>
+                <a href="./services.html" class="btn btn-tertiary me-3 animate-up-2">Что мы можем <span class="ms-2"><span class="fas fa-arrow-right"></span></span></a>
+            </div>
+          <div class="col-12 col-md-5 d-none d-md-block text-center"><img src="{% static 'assets/img/illustrations/about-illustration.svg' %}" alt=""></div>
+       </div>
+    </div>
+</section>
+</main>
+
+{% endblock content %}

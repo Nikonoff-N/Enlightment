@@ -1,0 +1,13 @@
+{%load static%}
+
+{%for group in groups%}
+<div class="main-card" id = "{{group.id}}">
+    <img src="{% static 'exp/img/group_sign.svg'%}">
+    <p>{{group.name}}</p>
+    <ol>
+        {%for student in group.student.all%}
+            <li>{{student.name}}</li>
+        {%endfor%}
+    </ol>
+</div>
+{%endfor%}

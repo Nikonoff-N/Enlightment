@@ -1,0 +1,21 @@
+{%load static%}
+
+<div class="container justify-content-center">
+    <h1 class="mb-0 h3">Новая группа</h1>
+        <form method="post" hx-post="{% url 'create_group_htmx' %}" hx-target='#group-list'  hx-encoding="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+                    <!-- Form -->
+            {{ form.non_field_errors }}
+            <label for="{{ form.name.id_for_label }}">Имя</label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">
+                    <span class="fas  fa-user"></span>
+                </span>
+                {{ form.name }}
+            </div>
+            <div>
+                <button onclick="closeDetails()">Cancel</button>
+                <button value="default" hx-post="{% url 'create_group' %}" hx-target='#group-list' hx-encoding="multipart/form-data" onclick="closeDetails()">Confirm</button>
+            </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+{%load static%}
+<div class="studentcard-main container justify-content-center">
+    <div class="row">
+        <div class="col">
+            {%if student.photo%}
+            <img src="{{student.photo}}">
+            {%elif student.gender%}
+            <img src="{% static 'exp/img/male_student.svg'%}">
+            {%else%}
+            <img src="{% static 'exp/img/female_student.svg'%}">
+            {%endif%}
+        </div>
+        <div class="col">
+            <h3>{{student.name}}</h3>
+            <p>{%if student.gender%}Муж.{%else%}Жен.{%endif%}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button onclick="closeDetails()">Закрыть</button>
+        </div>
+        <div class="col">
+            <button hx-get="{%url 'student_edit' student.id %}" hx-trigger="click" hx-target="#dialog">Редактировать</button>
+        </div>
+    </div>
+</div>

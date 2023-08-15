@@ -1,0 +1,17 @@
+{%load static%}
+{%for student in student_data%}
+<div class="main-card draggableStudent" id = "{{student.student.id}}" onclick="openDetails()" hx-get="{%url 'student_htmx' student.student.id %}" hx-target="#dialog" hx-trigger="click">
+    {%if student.student.photo%}
+    <img src='{{student.student.photo}}' draggable="false" >
+    {%elif student.student.gender%}
+    <img src="{% static 'exp/img/male_student.svg'%}" draggable="false" >
+    {%else%}
+    <img src="{% static 'exp/img/female_student.svg'%}" draggable="false" >
+    {%endif%}
+    <p>{{student.student.name}}
+        {%if student.invite.active%}
+        - {{student.invite.url}}
+        {%endif%}
+    </p>
+</div>
+{%endfor%}

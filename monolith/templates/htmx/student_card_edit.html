@@ -1,0 +1,44 @@
+{%load static%}
+<div class = "container">
+    <form method="post" hx-post="{% url 'student_edit' student.id %}" hx-target='#dialog'
+                            enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+    <h1 class="mb-0 h3">Новый ученик</h1>
+    {{ form.non_field_errors }}
+    <div class = "row">
+        <div class="col">
+
+                <div class="custom__form">
+                    <div class="custom__image-container">
+                        <img id="img-holder">
+                        <label id="add-img-label" for="{{ form.photo.id_for_label }}">+</label>
+                        {{ form.photo }}
+                    </div>
+                </div>
+
+        </div>
+        <div class="col">
+                    <label for="{{ form.name.id_for_label }}">Имя</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">
+                            <span class="fas  fa-user"></span>
+                        </span>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="form-check form-switch">
+                        {{ form.gender }}
+                        <!-- <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"> -->
+                        <label class="form-check-label" id="gender-label"
+                            for="{{ form.gender.id_for_label }}">Пол:Мужской</label>
+                    </div>
+        </div>
+    </div>
+    <button onclick="closeDetails()" type="cancel" id="cancelBtn">Cancel</button>
+    <button id="confirmBtn" value="default" hx-post="{% url 'student_edit' student.id %}" hx-target='#dialog' hx-encoding="multipart/form-data" type="submit">Confirm</button>
+    </form>
+    <script type="text/javascript">
+        init_form();
+     </script>
+</div>
+

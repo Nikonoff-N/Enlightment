@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+  {% include 'includes/pre-loader.html' %}
+
+        <!-- Section -->
+        <section class="section section-md">
+          <div class="container">
+              <div class="row align-items-center justify-content-around">
+                <h2>Hello, {{user.username}} from {{guild.name}}.You are the {{light.role}}</h2>
+              
+                  {%for student in student_data%}
+                    <p><img src="{{student.student.photo}}" height="100px">{{student.student.name}} - {{student.invite.url}} 
+                    <form action="{% url 'upload_image' student.student.id %}" method = POST enctype="multipart/form-data">
+                      {%csrf_token%}
+                      {{image_form.as_p}}
+                      <input type="submit" vulue = 'submit'>
+
+                    </form>
+                    
+                    </p>
+                  {%endfor%}
+              </div>
+          </div>
+      </section>
+      <section class="section section-md">
+        {% include 'includes/student_form.html' %}
+      </section>
+</main>
+
+{% endblock content %}
