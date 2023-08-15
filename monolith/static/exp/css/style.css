@@ -1,0 +1,160 @@
+body{
+    margin: 0;
+}
+/*#region main panel*/
+.screen{
+    width: 100vw;
+    height: calc(100vh - 50px);
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+}
+
+.main-studrow{
+    background-color:white;
+}
+.main-gruprow{
+    background-color:white;
+}
+.main-row{
+    height: 100%;
+    transition: width 0.5s;
+    flex-grow: 3;
+    border-right: black 3px solid;
+}
+
+.main-card{
+    /* height: 40px; */
+    width: 100%;
+    /* background-color:rgba(128, 128, 128, 0.403); */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 5px;
+    transition:background-color 0.2s;
+}
+
+.main-toping{
+    width: 100%;
+    /* background-color:rgba(128, 128, 128, 0.403); */
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 5px;
+    transition:background-color 0.2s;    
+}
+
+.main-card p {
+    margin: 0;
+}
+
+.main-card img{
+    height: 50px;
+    width: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    border-radius: 25px;
+}
+
+.main-short{
+    width: 60px;
+    min-width: 60px;
+}
+
+.main-short p {
+    display: none;
+}
+.main-short h2 {
+    display: none;
+}
+.main-full{
+    animation: open_tray 0.5s linear 0s 1 forwards;
+    /* width: 300px; */
+    /* min-width: 300px; */
+}
+.main-full h2{
+    max-width: 80%;
+    overflow: hidden;
+}
+.main-full p{
+    max-width: 80%;
+    overflow: hidden;
+}
+
+@keyframes open_tray {
+    from{
+        min-width:60px;
+        width: 60px;
+    }
+    to{
+        min-width:300px;
+        width: 300px;
+    }
+}
+
+
+.main-full .main-card:hover{
+    background-color:#3a85ff9a;
+}
+
+
+.calendar{
+    height: 100%;
+    width: 100%;
+    flex-shrink: 2;
+    background-color:white;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 5;
+}
+.dayrow{
+    height: 100%;
+    width: 20%;
+    flex-shrink: 1;
+}
+.dayrow_odd{
+    background-color:white;
+}
+.dayrow_even{
+    background-color:rgb(209, 209, 209);
+}
+.cover{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.top_bar{
+    width: 100vw;
+    height: 50px;
+    background-color: black;
+    flex-shrink: 0;
+}
+/*#endregion*/
+
+
+/* #region arrow */
+
+div.main-arrow {
+    height: 50px;
+    width: 50px;
+    transition: all 0.5s;
+    margin-left: auto;
+}
+.main-full .main-arrow{
+    transform: rotate(-90deg);
+}
+.main-short .main-arrow{
+    transform: rotate(90deg);
+}
+/* #endregion */
+
+.studentcard-main img{
+    width: 200px;
+    height: auto;
+    max-height: 200px;
+}

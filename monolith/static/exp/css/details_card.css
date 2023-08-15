@@ -1,0 +1,11 @@
+.student-card{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.student-card img{
+    height: 200px;
+}
+#detailsDialog{
+    text-align: center;
+}
